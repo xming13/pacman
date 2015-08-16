@@ -22,7 +22,10 @@ body {
 .pacman {
     height: 100px;
     width: 100px;
-    @include animation('pacman-walk' 4s linear forwards);
+    display: inline-block;
+    vertical-align: middle;
+    
+//    @include animation('pacman-walk' 4s linear forwards);
 
     .top {
         background: yellow;
@@ -32,7 +35,7 @@ body {
         border-top-right-radius: 50px;
         border-bottom: 0;
         transform-origin: 50% 100%;
-        @include animation('pacman-top' 1s infinite ease-in-out);
+//        @include animation('pacman-top' 1s infinite ease-in-out);
      }
 
     .bottom {
@@ -43,10 +46,24 @@ body {
         border-bottom-left-radius: 50px;
         border-bottom-right-radius: 50px;
         transform-origin: 50% 0%;
-        @include animation('pacman-bottom' 1s infinite ease-in-out);
+//        @include animation('pacman-bottom' 1s infinite ease-in-out);
     }
 }
 
+.dots {
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+
+    .dot {
+        height: 20px;
+        width: 20px;
+        background-color: yellow;
+        border-radius: 50%;
+        margin: 0 80px 0 0px;
+        display: inline-block;
+    }
+}
 @include keyframes(pacman-walk) {
     0% {
         @include transform(none);

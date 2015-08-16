@@ -17,9 +17,8 @@ body {
 .pacman {
   height: 100px;
   width: 100px;
-  -webkit-animation: "pacman-walk" 4s linear forwards;
-  -moz-animation: "pacman-walk" 4s linear forwards;
-  animation: "pacman-walk" 4s linear forwards; }
+  display: inline-block;
+  vertical-align: middle; }
   .pacman .top {
     background: yellow;
     height: 50px;
@@ -27,10 +26,7 @@ body {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom: 0;
-    transform-origin: 50% 100%;
-    -webkit-animation: "pacman-top" 1s infinite ease-in-out;
-    -moz-animation: "pacman-top" 1s infinite ease-in-out;
-    animation: "pacman-top" 1s infinite ease-in-out; }
+    transform-origin: 50% 100%; }
   .pacman .bottom {
     background: yellow;
     height: 50px;
@@ -38,10 +34,19 @@ body {
     border-top: 0;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    transform-origin: 50% 0%;
-    -webkit-animation: "pacman-bottom" 1s infinite ease-in-out;
-    -moz-animation: "pacman-bottom" 1s infinite ease-in-out;
-    animation: "pacman-bottom" 1s infinite ease-in-out; }
+    transform-origin: 50% 0%; }
+
+.dots {
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle; }
+  .dots .dot {
+    height: 20px;
+    width: 20px;
+    background-color: yellow;
+    border-radius: 50%;
+    margin: 0 80px 0 0px;
+    display: inline-block; }
 
 @-webkit-keyframes pacman-walk {
   0% {
