@@ -1,11 +1,34 @@
 @import "bourbon/bourbon";
 
+/* Reset */
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0; }
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table; }
+
+.clearfix:after {
+    clear: both; }
+
 html,
 body {
     position: relative;
     height: 100%;
-    width: 100%;
-    margin: 0;
+    width: 800px;
+    margin: 0 auto;
     overflow: hidden;
 }
 
@@ -15,8 +38,67 @@ body {
 }
 
 .row {
+    position: relative;
     background-color: #ffb312;
     padding: 30px 0;
+    width: 1200px;
+    left: -400px;
+}
+
+.characters {
+    position: relative;
+    display: inline-block;
+//    @include transform(translateX(-100%));
+    //    transform: translateX(-100%);
+}
+
+.monster {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 90px;
+    width: 90px;
+    margin: 0 5px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+
+    &.monster1 {
+        background-color: red;
+    }
+
+    &.monster2 {
+        background-color: blue;
+    }
+
+    &.monster3 {
+        background-color: aqua;
+    }
+
+    .eye {
+        position: absolute;
+        top: 25px;
+        height: 25px;
+        width: 25px;
+        background-color: #fff;
+        border-radius: 50%;
+
+        &.eye-left {
+            left: 15px;
+        }
+        &.eye-right {
+            right: 15px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            right: 0px;
+            width: 15px;
+            height: 15px;
+            background: #000;
+            border-radius: 50%;
+        }
+    }
 }
 
 .pacman {
@@ -24,8 +106,8 @@ body {
     width: 100px;
     display: inline-block;
     vertical-align: middle;
-    
-//    @include animation('pacman-walk' 4s linear forwards);
+    position: relative;
+    //    @include animation('pacman-walk' 4s linear forwards);
 
     .top {
         background: yellow;
@@ -35,8 +117,8 @@ body {
         border-top-right-radius: 50px;
         border-bottom: 0;
         transform-origin: 50% 100%;
-//        @include animation('pacman-top' 1s infinite ease-in-out);
-     }
+        //        @include animation('pacman-top' 1s infinite ease-in-out);
+    }
 
     .bottom {
         background: yellow;
@@ -46,12 +128,13 @@ body {
         border-bottom-left-radius: 50px;
         border-bottom-right-radius: 50px;
         transform-origin: 50% 0%;
-//        @include animation('pacman-bottom' 1s infinite ease-in-out);
+        //        @include animation('pacman-bottom' 1s infinite ease-in-out);
     }
 }
 
 .dots {
-    height: 20px;
+//    left: -400px;
+    position: relative;
     display: inline-block;
     vertical-align: middle;
 
@@ -60,10 +143,12 @@ body {
         width: 20px;
         background-color: yellow;
         border-radius: 50%;
-        margin: 0 80px 0 0px;
+        margin: 0 30px 0 30px;
         display: inline-block;
+        vertical-align: middle;
     }
 }
+
 @include keyframes(pacman-walk) {
     0% {
         @include transform(none);
@@ -72,8 +157,9 @@ body {
         @include transform(translate(400%));
     }
 }
+
 @include keyframes(pacman-top) {
-    0%,100% {
+    0%, 100% {
         @include transform(none);
     }
 
@@ -81,8 +167,9 @@ body {
         @include transform(rotateZ(-45deg));
     }
 }
+
 @include keyframes(pacman-bottom) {
-    0%,100% {
+    0%, 100% {
         @include transform(none);
     }
 

@@ -1,9 +1,32 @@
+/* Reset */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0; }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
 html,
 body {
   position: relative;
   height: 100%;
-  width: 100%;
-  margin: 0;
+  width: 800px;
+  margin: 0 auto;
   overflow: hidden; }
 
 .container {
@@ -11,14 +34,58 @@ body {
   background: #00ffca; }
 
 .row {
+  position: relative;
   background-color: #ffb312;
-  padding: 30px 0; }
+  padding: 30px 0;
+  width: 1200px;
+  left: -400px; }
+
+.characters {
+  position: relative;
+  display: inline-block; }
+
+.monster {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 90px;
+  width: 90px;
+  margin: 0 5px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%; }
+  .monster.monster1 {
+    background-color: red; }
+  .monster.monster2 {
+    background-color: blue; }
+  .monster.monster3 {
+    background-color: aqua; }
+  .monster .eye {
+    position: absolute;
+    top: 25px;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%; }
+    .monster .eye.eye-left {
+      left: 15px; }
+    .monster .eye.eye-right {
+      right: 15px; }
+    .monster .eye:after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 0px;
+      width: 15px;
+      height: 15px;
+      background: #000;
+      border-radius: 50%; }
 
 .pacman {
   height: 100px;
   width: 100px;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  position: relative; }
   .pacman .top {
     background: yellow;
     height: 50px;
@@ -37,7 +104,7 @@ body {
     transform-origin: 50% 0%; }
 
 .dots {
-  height: 20px;
+  position: relative;
   display: inline-block;
   vertical-align: middle; }
   .dots .dot {
@@ -45,8 +112,9 @@ body {
     width: 20px;
     background-color: yellow;
     border-radius: 50%;
-    margin: 0 80px 0 0px;
-    display: inline-block; }
+    margin: 0 30px 0 30px;
+    display: inline-block;
+    vertical-align: middle; }
 
 @-webkit-keyframes pacman-walk {
   0% {
@@ -72,17 +140,17 @@ body {
     -o-transform: translate(400%);
     transform: translate(400%); } }
 @-webkit-keyframes pacman-top {
-  0%,100% {
+  0%, 100% {
     -webkit-transform: none; }
   50% {
     -webkit-transform: rotateZ(-45deg); } }
 @-moz-keyframes pacman-top {
-  0%,100% {
+  0%, 100% {
     -moz-transform: none; }
   50% {
     -moz-transform: rotateZ(-45deg); } }
 @keyframes pacman-top {
-  0%,100% {
+  0%, 100% {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -95,17 +163,17 @@ body {
     -o-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg); } }
 @-webkit-keyframes pacman-bottom {
-  0%,100% {
+  0%, 100% {
     -webkit-transform: none; }
   50% {
     -webkit-transform: rotateZ(45deg); } }
 @-moz-keyframes pacman-bottom {
-  0%,100% {
+  0%, 100% {
     -moz-transform: none; }
   50% {
     -moz-transform: rotateZ(45deg); } }
 @keyframes pacman-bottom {
-  0%,100% {
+  0%, 100% {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
