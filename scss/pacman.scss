@@ -1,0 +1,87 @@
+@import "bourbon/bourbon";
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    height: 100%;
+    background: #00ffca;
+}
+
+.row {
+    background-color: #ffb312;
+    padding: 30px 0;
+}
+
+.pacman {
+    height: 100px;
+    width: 100px;
+    @include animation('pacman-walk' 4s linear forwards);
+
+    .top {
+        background: yellow;
+        height: 50px;
+        width: 100px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        border-bottom: 0;
+        transform-origin: 50% 100%;
+        @include animation('pacman-top' 1s infinite ease-in-out);
+     }
+
+    .bottom {
+        background: yellow;
+        height: 50px;
+        width: 100px;
+        border-top: 0;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        transform-origin: 50% 0%;
+        @include animation('pacman-bottom' 1s infinite ease-in-out);
+    }
+}
+
+@include keyframes(pacman-walk) {
+    0% {
+        @include transform(none);
+    }
+    100% {
+        @include transform(translate(400%));
+    }
+}
+@include keyframes(pacman-top) {
+    0%,100% {
+        @include transform(none);
+    }
+
+    50% {
+        @include transform(rotateZ(-45deg));
+    }
+}
+@include keyframes(pacman-bottom) {
+    0%,100% {
+        @include transform(none);
+    }
+
+    50% {
+        @include transform(rotateZ(45deg));
+    }
+}
+
+@include keyframes(eye-blink) {
+    0% {
+        @include transform(scale(1, 1));
+    }
+    2%, 4% {
+        @include transform(scale(1, 0));
+    }
+    5%, 100% {
+        @include transform(scale(1, 1));
+    }
+}
