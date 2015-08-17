@@ -7,21 +7,25 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 0; }
+    font-size: 0;
+}
 
 ul {
     margin: 0;
     padding: 0;
-    list-style-type: none; }
+    list-style-type: none;
+}
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before,
 .clearfix:after {
     content: " ";
-    display: table; }
+    display: table;
+}
 
 .clearfix:after {
-    clear: both; }
+    clear: both;
+}
 
 html,
 body {
@@ -39,7 +43,7 @@ body {
 
 .row {
     position: relative;
-    background-color: #ffb312;
+    background-color: #222222;
     padding: 30px 0;
     width: 1200px;
     left: -400px;
@@ -48,7 +52,7 @@ body {
 .characters {
     position: relative;
     display: inline-block;
-//    @include transform(translateX(-100%));
+    //    @include transform(translateX(-100%));
     //    transform: translateX(-100%);
 }
 
@@ -56,54 +60,115 @@ body {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
     margin: 0 5px;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
 
-    &.monster1 {
-        background-color: red;
-    }
-
-    &.monster2 {
-        background-color: blue;
-    }
-
-    &.monster3 {
-        background-color: aqua;
-    }
-
     .eye {
         position: absolute;
-        top: 25px;
-        height: 25px;
-        width: 25px;
+        top: 20px;
+        height: 20px;
+        width: 20px;
         background-color: #fff;
         border-radius: 50%;
 
         &.eye-left {
-            left: 15px;
+            left: 10px;
         }
         &.eye-right {
-            right: 15px;
+            right: 10px;
         }
         &:after {
             content: "";
             position: absolute;
             top: 5px;
             right: 0px;
-            width: 15px;
-            height: 15px;
-            background: #000;
+            width: 10px;
+            height: 10px;
+            background: #00f;
             border-radius: 50%;
+        }
+    }
+
+    &.monster1 {
+        background-color: red;
+    }
+
+    &.monster2 {
+        background-color: pink;
+    }
+
+    &.monster3 {
+        background-color: cyan;
+    }
+
+    &.monster4 {
+        background-color: orange;
+    }
+
+    &:after {
+        content: " ";
+        display: block;
+        position: relative;
+        top: 50px;
+        height: 20px;
+        @include background(linear-gradient(transparent 0%, transparent 0%), linear-gradient(135deg, #222 33.33%, transparent 33.33%) 0 0%, linear-gradient(45deg, #222 33.33%, transparent 33.33%) 0 0%);
+        background-repeat: repeat-x;
+        background-size: 0px 100%, 14px 20px, 14px 20px;
+    }
+
+    &.vulnerable {
+        background-color: blue;
+
+        .eye {
+            height: 15px;
+            width: 15px;
+
+            &.eye-left {
+                left: 15px;
+            }
+            &.eye-right {
+                right: 15px;
+            }
+            &:after {
+                display: none;
+            }
+        }
+
+        $mouth_length: 9px;
+        .mouth {
+            position: absolute;
+            top: 43px;
+            height: $mouth_length;
+            width: $mouth_length;
+            border-top: 3px solid #fff;
+            border-left: 3px solid #fff;
+            border-bottom: 0px solid #fff;
+            border-right: 0px solid #fff;
+            border-radius: 30%;
+            @include transform(translateX(-50%) rotateZ(45deg));
+
+            &.mouth1 {
+                @include calc(left, 35 - 1.5 * $mouth_length);
+            }
+            &.mouth2 {
+                @include calc(left, 35 - .5 * $mouth_length);
+            }
+            &.mouth3 {
+                @include calc(left, 35 + .5 * $mouth_length);
+            }
+            &.mouth4 {
+                @include calc(left, 35 + 1.5 * $mouth_length);
+            }
         }
     }
 }
 
 .pacman {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -111,10 +176,10 @@ body {
 
     .top {
         background: yellow;
-        height: 50px;
-        width: 100px;
-        border-top-left-radius: 50px;
-        border-top-right-radius: 50px;
+        height: 40px;
+        width: 80px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
         border-bottom: 0;
         transform-origin: 50% 100%;
         //        @include animation('pacman-top' 1s infinite ease-in-out);
@@ -122,18 +187,22 @@ body {
 
     .bottom {
         background: yellow;
-        height: 50px;
-        width: 100px;
+        height: 40px;
+        width: 80px;
         border-top: 0;
-        border-bottom-left-radius: 50px;
-        border-bottom-right-radius: 50px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
         transform-origin: 50% 0%;
         //        @include animation('pacman-bottom' 1s infinite ease-in-out);
+    }
+
+    &.reverse {
+        //        @include transform(rotateY(180deg));
     }
 }
 
 .dots {
-//    left: -400px;
+    //    left: -400px;
     position: relative;
     display: inline-block;
     vertical-align: middle;
