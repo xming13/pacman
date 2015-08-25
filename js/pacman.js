@@ -5,8 +5,7 @@ $(function () {
     var mainTimeline = new TimelineMax({paused: true});
     var pacmanTimeline = new TimelineMax();
 
-    var monsterAfterRule = CSSRulePlugin.getRule(".monster:after");
-    console.log(monsterAfterRule);
+//    var monsterAfterRule = CSSRulePlugin.getRule(".monster:after");
     var timePerDot = .5;
     pacmanTimeline.addLabel("pacman")
         .to(".characters", timePerDot * 15, { left: "100%", ease: Linear.easeNone, onComplete: pacmanReverse }, "pacman")
@@ -22,8 +21,7 @@ $(function () {
         .to(".dot7", .1, { opacity: 0, delay: timePerDot * 7}, "pacman")
         .to(".dot8", .1, { opacity: 0, delay: timePerDot * 8}, "pacman")
         .to(".dot9", .1, { opacity: 0, delay: timePerDot * 9}, "pacman")
-        .to(".dot10", .1, { opacity: 0, delay: timePerDot * 10}, "pacman")
-        .to(monsterAfterRule, timePerDot / 2, { cssRule: { top: "-=7px", repeat: 30, yoyo: true }});
+        .to(".dot10", .1, { opacity: 0, delay: timePerDot * 10}, "pacman");
 
     function pacmanReverse() {
         $(".monster").addClass("vulnerable");
